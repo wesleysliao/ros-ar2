@@ -1,0 +1,16 @@
+<launch>
+    <rosparam file="$(find ar2_hardware_interface)/config/hardware.yaml" command="load"/>
+    <rosparam file="$(find ar2_hardware_interface)/config/controllers.yaml" command="load"/>
+    <rosparam file="$(find ar2_hardware_interface)/config/joint_limits.yaml" command="load"/>
+    <node name="ar2_hardware_interface" pkg="ar2_hardware_interface" type="ar2_hardware_interface_node" output="screen"/>
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/"
+        args="
+            /ar2/controller/state
+            /ar2/controller/position/joint_1
+            /ar2/controller/position/joint_2
+            /ar2/controller/position/joint_3
+            /ar2/controller/position/joint_4
+            /ar2/controller/position/joint_5
+            /ar2/controller/position/joint_6
+        "/>
+</launch>
