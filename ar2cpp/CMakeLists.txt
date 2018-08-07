@@ -1,26 +1,13 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(ar2_hw_interface)
+project(ar2cpp)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++11)
+# add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS
-  hardware_interface
-  controller_manager
-  roscpp
-  control_msgs
-  trajectory_msgs
-  actionlib
-  pluginlib
-  transmission_interface
-  urdf
-  control_toolbox
-  joint_limits_interface
-	ar2cpp
-)
+find_package(catkin REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -112,23 +99,10 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  INCLUDE_DIRS 
-    include
-  CATKIN_DEPENDS 
-    hardware_interface
-    controller_manager
-    roscpp
-    control_msgs
-    trajectory_msgs
-    pluginlib
-    transmission_interface
-    urdf
-    control_toolbox
-    joint_limits_interface
-		ar2cpp
-  LIBRARIES 
-    ar2_hardware_interface
-		ar2cpp
+#  INCLUDE_DIRS include
+#  LIBRARIES ar2cpp
+#  CATKIN_DEPENDS other_catkin_pkg
+#  DEPENDS system_lib
 )
 
 ###########
@@ -138,13 +112,13 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
- include
- ${catkin_INCLUDE_DIRS}
+# include
+# ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/ar2_hw_interface.cpp
+#   src/${PROJECT_NAME}/ar2cpp.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -155,7 +129,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/ar2_hw_interface_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/ar2cpp_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -194,24 +168,11 @@ include_directories(
 # )
 
 ## Mark cpp header files for installation
-install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-  FILES_MATCHING PATTERN "*.h"
-  PATTERN ".svn" EXCLUDE
-)
-
-add_library(ar2_hardware_interface src/ar2_hardware_interface.cpp)
-add_dependencies(ar2_hardware_interface ar2cpp)
-target_link_libraries(ar2_hardware_interface
-	${ar2cpp_LIBRARIES}
-	${catkin_LIBRARIES})
-
-add_executable(ar2_hardware_interface_node src/ar2_hardware_interface_node.cpp)
-add_dependencies(ar2_hardware_interface_node ar2_hardware_interface)
-
-target_link_libraries(ar2_hardware_interface_node
-	ar2_hardware_interface
-	${catkin_LIBRARIES})
+# install(DIRECTORY include/${PROJECT_NAME}/
+#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+#   FILES_MATCHING PATTERN "*.h"
+#   PATTERN ".svn" EXCLUDE
+# )
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 # install(FILES
@@ -225,7 +186,7 @@ target_link_libraries(ar2_hardware_interface_node
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_ar2_hw_interface.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_ar2cpp.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
