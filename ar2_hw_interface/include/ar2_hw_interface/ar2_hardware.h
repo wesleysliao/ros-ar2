@@ -1,5 +1,5 @@
-#ifndef ROS_CONTROL__ar2_HARDWARE_H
-#define ROS_CONTROL__ar2_HARDWARE_H
+#ifndef ROS_CONTROL__AR2_HARDWARE_H
+#define ROS_CONTROL__AR2_HARDWARE_H
 
 #include <hardware_interface/joint_state_interface.h>
 #include <hardware_interface/joint_command_interface.h>

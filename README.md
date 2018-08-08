@@ -1,0 +1,1 @@
+Metapackage containing ROS packages to control the [AR2 robot arm](https://github.com/Chris-Annin/AR2). Based off of the [SlateRobotics tr1 packages](https://github.com/SlateRobotics) as a way for me to learn how to use ros_control.

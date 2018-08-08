@@ -1,4 +1,4 @@
-ifndef ROS_CONTROL__AR2_HARDWARE_INTERFACE_H
+#ifndef ROS_CONTROL__AR2_HARDWARE_INTERFACE_H
 #define ROS_CONTROL__AR2_HARDWARE_INTERFACE_H
 
 #include <hardware_interface/joint_state_interface.h>
@@ -11,7 +11,7 @@ ifndef ROS_CONTROL__AR2_HARDWARE_INTERFACE_H
 #include <controller_manager/controller_manager.h>
 #include <boost/scoped_ptr.hpp>
 #include <ros/ros.h>
-#include <AR2cpp/AR2.h>
+#include <ar2cpp/ar2.h>
 #include <ar2_hw_interface/ar2_hardware.h>
 
 using namespace hardware_interface;
@@ -26,7 +26,7 @@ namespace ar2_hardware_interface
     static const double POSITION_STEP_FACTOR = 10;
     static const double VELOCITY_STEP_FACTOR = 10;
 
-    class AR2HardwareInterface: public AR2_hardware_interface::AR2Hardware
+    class AR2HardwareInterface: public ar2_hardware_interface::AR2Hardware
     {
         public:
             AR2HardwareInterface(ros::NodeHandle& nh);
@@ -37,7 +37,7 @@ namespace ar2_hardware_interface
             void write(ros::Duration elapsed_time);
 
         protected:
-            AR2cpp::AR2 AR2;
+            ar2cpp::AR2 AR2;
             ros::NodeHandle nh_;
             ros::Timer non_realtime_loop_;
             ros::Duration control_period_;

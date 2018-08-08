@@ -127,7 +127,7 @@ catkin_package(
     joint_limits_interface
 		ar2cpp
   LIBRARIES 
-    ar2_hardware_interface
+    ar2_hw_interface
 		ar2cpp
 )
 
@@ -200,17 +200,17 @@ install(DIRECTORY include/${PROJECT_NAME}/
   PATTERN ".svn" EXCLUDE
 )
 
-add_library(ar2_hardware_interface src/ar2_hardware_interface.cpp)
-add_dependencies(ar2_hardware_interface ar2cpp)
+add_library(ar2_hw_interface src/ar2_hw_interface.cpp)
+add_dependencies(ar2_hw_interface ar2cpp)
 target_link_libraries(ar2_hw_interface
 	${ar2cpp_LIBRARIES}
 	${catkin_LIBRARIES})
 
-add_executable(ar2_hardware_interface_node src/ar2_hardware_interface_node.cpp)
-add_dependencies(ar2_hardware_interface_node ar2_hardware_interface)
+add_executable(ar2_hw_interface_node src/ar2_hw_interface_node.cpp)
+add_dependencies(ar2_hw_interface_node ar2_hw_interface)
 
 target_link_libraries(ar2_hw_interface_node
-	ar2_hardware_interface
+	ar2_hw_interface
 	${catkin_LIBRARIES})
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
